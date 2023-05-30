@@ -31,13 +31,24 @@ public class HomeController : Controller
         return View();
     }
     
-    public IActionResult Student(){
-        var studentlist = new List<Student>{
+    static List<Student> students = new List<Student>{
             new Student{Id = 1 , NameSurname = "Asan Usernov", Age= 23},
             new Student{Id = 2 , NameSurname = "Bek Usenov", Age = 33},
             new Student{Id = 3 , NameSurname = "Sultan Usenov", Age = 34}
         };
-        return View(studentlist);
+    public IActionResult Student(){
+        return View(students);
+    }
+    public IActionResult NewStudent()
+    {
+        return View();
+    }
+    [HttpPost]
+    public IActionResult NewStudent(Student student)
+    {
+        student.Id = students.Max(s=>s.Id)+1;
+        students.Add(student);
+        return RedirectToAction("Student");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
