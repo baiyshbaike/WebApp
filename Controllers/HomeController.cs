@@ -15,7 +15,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        List<string> cities = new List<string>{
+            "Bishkek","Osh","Batken"
+        };
+        return View(cities);
     }
 
     public IActionResult Privacy()
@@ -26,6 +29,15 @@ public class HomeController : Controller
     public IActionResult About()
     {
         return View();
+    }
+    
+    public IActionResult Student(){
+        var studentlist = new List<Student>{
+            new Student{Id = 1 , NameSurname = "Asan Usernov", Age= 23},
+            new Student{Id = 2 , NameSurname = "Bek Usenov", Age = 33},
+            new Student{Id = 3 , NameSurname = "Sultan Usenov", Age = 34}
+        };
+        return View(studentlist);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
