@@ -39,6 +39,9 @@ public class HomeController : Controller
     public IActionResult Student(){
         return View(students);
     }
+    public IActionResult Students(){
+        return Json(students);
+    }
     public IActionResult NewStudent()
     {
         return View();
