@@ -46,8 +46,11 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult NewStudent(Student student)
     {
-        student.Id = students.Max(s=>s.Id)+1;
-        students.Add(student);
+        if(ModelState.IsValid)
+        {
+            student.Id = students.Max(s=>s.Id)+1;
+            students.Add(student);
+        }
         return RedirectToAction("Student");
     }
 

@@ -1,6 +1,10 @@
 @model Student
 <form asp-controller="Home" asp-action="NewStudent" method="post">
-    NameSurname:<input type="text" class="form-control" name="NameSurName" placeholder="Enter Name"/>
-    Age:<input type="number" name="Age" class="form-control"/>
+    <div class="container">
+        <div class="form-group">
+            <input asp-for="NameSurname" class="form-control" placeholder="Enter Name"/>
+            <input asp-for="Age" class="form-control" placeholder="Age"/>
+        </div>
+    </div>
     <input type="submit" value="send data" class="btn btn-primary"/>
 </form>
